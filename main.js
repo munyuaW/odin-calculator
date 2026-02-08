@@ -98,6 +98,7 @@ function equals() {
   updateDisplay(result);
 
   previousValue = result;
+  currentValue = result; // At all times, currentValue reflects what the display is showing
 
   operator = null;
 
