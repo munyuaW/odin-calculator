@@ -9,7 +9,6 @@ const clearBtn = document.querySelector(".clear");
 const decimal = document.querySelector(".decimal");
 const equalsBtn = document.querySelector(".equals");
 
-// TODO: add a backspace button functionality to undo the last input
 const deleteBtn = document.querySelector(".delete");
 
 // The calculator state variables
@@ -50,6 +49,7 @@ function subtract(a, b) {
 function multiply(a, b) {
   return a * b;
 }
+// TODO: what should happen after ERR!
 function divide(a, b) {
   if (b === 0) return "ERR!";
   return a / b;
@@ -106,8 +106,10 @@ function equals() {
 }
 
 function undo() {
-  currentValue.split("").pop();
-  currentValue.join("");
+  let lastIndex = currentValue.length - 1;
+  currentValue = currentValue.slice(0, lastIndex);
+  if (currentValue.length === 0) currentValue = "0";
+
   updateDisplay(currentValue);
 }
 
